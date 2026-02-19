@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Shield background -->
+  <path d="M16 2 L28 7 L28 18 C28 24.5 22.5 29.5 16 31 C9.5 29.5 4 24.5 4 18 L4 7 Z"
+        fill="#238636" stroke="#2ea043" stroke-width="1"/>
+  <!-- Lightning bolt representing velocity -->
+  <polygon points="18,8 11,18 15.5,18 14,26 21,15 16.5,15"
+           fill="#ffffff"/>
+</svg>
