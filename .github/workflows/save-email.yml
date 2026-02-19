@@ -1,0 +1,39 @@
+name: Save Waitlist Email
+
+on:
+  repository_dispatch:
+    types: [email_submission]
+
+permissions:
+  contents: write
+
+jobs:
+  save-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Append email to waitlist
+        run: |
+          mkdir -p waitlist
+          EMAIL="${{ github.event.client_payload.email }}"
+          # Validate basic email format
+          if ! echo "$EMAIL" | grep -qE '^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$'; then
+            echo "Invalid email address – skipping."
+            exit 1
+          fi
+          # Skip if email already exists
+          if grep -qxF "$EMAIL" waitlist/emails.txt 2>/dev/null; then
+            echo "Email already on waitlist – skipping."
+            exit 0
+          fi
+          echo "$EMAIL" >> waitlist/emails.txt
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add waitlist/emails.txt
+          git diff --cached --quiet || git commit -m "Add email to waitlist"
+          git push
