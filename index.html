@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VelocityGate Cloud 🛡️ - Waitlist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            background-color: #161b22;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+            padding: 48px 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .sub-headline {
+            font-size: 1.125rem;
+            color: #8b949e;
+            margin-bottom: 32px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .features li {
+            padding: 12px 0;
+            font-size: 1rem;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .form-container {
+            margin-bottom: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        input[type="email"] {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            padding: 12px 16px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #238636;
+            box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.3);
+        }
+
+        input[type="email"]::placeholder {
+            color: #6e7681;
+        }
+
+        button[type="submit"] {
+            background-color: #238636;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2ea043;
+        }
+
+        button[type="submit"]:active {
+            background-color: #1f7f34;
+        }
+
+        footer {
+            text-align: center;
+            color: #6e7681;
+            font-size: 0.875rem;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #21262d;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 32px 24px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .sub-headline {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VelocityGate Cloud 🛡️</h1>
+        <p class="sub-headline">
+            The zero-latency AI firewall. Block Puppeteer, Selenium, and high-velocity scrapers from hitting your API—no matter what language your backend is written in.
+        </p>
+
+        <ul class="features">
+            <li>✅ Universal Proxy: Works with Node, Python, Java, Go, and PHP.</li>
+            <li>✅ Zero Overhead: Drops malicious traffic at the edge.</li>
+            <li>✅ Real-time Dashboard: See exactly who is attacking your endpoints.</li>
+        </ul>
+
+        <div class="form-container">
+            <form action="YOUR_FORMSPREE_LINK_HERE" method="POST">
+                <input type="email" name="email" placeholder="engineer@company.com" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
+        </div>
+
+        <footer>
+            Currently designing the architecture. Join the waitlist for early access.
+        </footer>
+    </div>
+</body>
+</html>
