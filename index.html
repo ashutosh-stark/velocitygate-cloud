@@ -119,6 +119,26 @@
             background-color: #1f7f34;
         }
 
+        button[type="submit"]:disabled {
+            background-color: #21262d;
+            color: #8b949e;
+            cursor: not-allowed;
+        }
+
+        .message {
+            font-size: 0.875rem;
+            text-align: center;
+            min-height: 1.25rem;
+        }
+
+        .message.success {
+            color: #3fb950;
+        }
+
+        .message.error {
+            color: #f85149;
+        }
+
         footer {
             text-align: center;
             color: #6e7681;
@@ -157,16 +177,68 @@
         </ul>
 
         <div class="form-container">
-            <form action="YOUR_FORMSPREE_LINK_HERE" method="POST">
+            <form id="waitlist-form">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" placeholder="engineer@company.com" required>
-                <button type="submit">Join Waitlist</button>
+                <button type="submit" id="submit-btn">Join Waitlist</button>
             </form>
+            <p class="message" id="form-message"></p>
         </div>
 
         <footer>
             Currently designing the architecture. Join the waitlist for early access.
         </footer>
     </div>
+    <script>
+        const GITHUB_REPO = 'ashutosh-stark/velocitygate-cloud';
+        // Replace with a fine-grained PAT (Contents: Read & Write, repo scope only)
+        const GITHUB_TOKEN = 'YOUR_GITHUB_PAT_HERE';
+
+        document.getElementById('waitlist-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const btn = document.getElementById('submit-btn');
+            const msg = document.getElementById('form-message');
+
+            btn.disabled = true;
+            btn.textContent = 'Submitting…';
+            msg.textContent = '';
+            msg.className = 'message';
+
+            try {
+                const response = await fetch(
+                    `https://api.github.com/repos/${GITHUB_REPO}/dispatches`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/vnd.github+json',
+                            'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                            'Content-Type': 'application/json',
+                            'X-GitHub-Api-Version': '2022-11-28'
+                        },
+                        body: JSON.stringify({
+                            event_type: 'email_submission',
+                            client_payload: { email: email }
+                        })
+                    }
+                );
+
+                if (response.status === 204) {
+                    msg.textContent = "✅ You're on the list! We'll be in touch.";
+                    msg.className = 'message success';
+                    document.getElementById('email').value = '';
+                    btn.textContent = 'Joined!';
+                } else {
+                    throw new Error(`Unexpected status ${response.status}`);
+                }
+            } catch (error) {
+                console.error('Waitlist submission error:', error);
+                msg.textContent = '❌ Something went wrong. Please try again.';
+                msg.className = 'message error';
+                btn.disabled = false;
+                btn.textContent = 'Join Waitlist';
+            }
+        });
+    </script>
 </body>
 </html>
