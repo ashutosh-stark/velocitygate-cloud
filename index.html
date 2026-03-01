@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VelocityGate Cloud 🛡️ - Waitlist</title>
+    <title>VelocityGate Cloud 🛡️ - Early Alpha</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
@@ -27,17 +27,32 @@
         .container {
             background-color: #161b22;
             border-radius: 12px;
+            border: 1px solid #30363d;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
             max-width: 600px;
             width: 100%;
             padding: 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle glow effect for premium feel */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #238636, #2ea043);
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 16px;
             color: #ffffff;
             text-align: center;
+            line-height: 1.2;
         }
 
         .sub-headline {
@@ -48,15 +63,27 @@
             line-height: 1.5;
         }
 
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
         .features {
             list-style: none;
             margin-bottom: 32px;
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #21262d;
         }
 
         .features li {
             padding: 12px 0;
             font-size: 1rem;
             border-bottom: 1px solid #21262d;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .features li:last-child {
@@ -78,7 +105,7 @@
             border: 1px solid #30363d;
             border-radius: 6px;
             color: #c9d1d9;
-            padding: 12px 16px;
+            padding: 14px 16px;
             font-size: 1rem;
             transition: border-color 0.2s ease;
         }
@@ -97,7 +124,8 @@
             display: block;
             margin-bottom: 8px;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
+            color: #e6edf3;
         }
 
         button[type="submit"] {
@@ -105,8 +133,8 @@
             color: #ffffff;
             border: none;
             border-radius: 6px;
-            padding: 12px 24px;
-            font-size: 1rem;
+            padding: 14px 24px;
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s ease;
@@ -130,6 +158,8 @@
             font-size: 0.875rem;
             text-align: center;
             min-height: 1.25rem;
+            margin-top: 12px;
+            font-weight: 500;
         }
 
         .message.success {
@@ -140,10 +170,26 @@
             color: #f85149;
         }
 
+        .scarcity-badge {
+            display: inline-block;
+            background: rgba(248, 81, 73, 0.1);
+            color: #ff7b72;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid rgba(248, 81, 73, 0.4);
+        }
+
+        .center-badge {
+            text-align: center;
+        }
+
         footer {
             text-align: center;
             color: #6e7681;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             margin-top: 24px;
             padding-top: 24px;
             border-top: 1px solid #21262d;
@@ -153,43 +199,44 @@
             .container {
                 padding: 32px 24px;
             }
-
             h1 {
-                font-size: 2rem;
-            }
-
-            .sub-headline {
-                font-size: 1rem;
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>VelocityGate Cloud 🛡️</h1>
+        <div class="center-badge">
+            <div class="scarcity-badge">🔴 Only 19 Alpha Spots Remaining</div>
+        </div>
+        
+        <h1>Stop AI Scrapers.<br>Protect Your Cloud Bill. 🛡️</h1>
+        
         <p class="sub-headline">
-            The zero-latency AI firewall. Block Puppeteer, Selenium, and high-velocity scrapers from hitting your API—no matter what language your backend is written in.
+            VelocityGate Cloud is a zero-config Go Reverse Proxy. Point your DNS to us, and we drop aggressive bot traffic <span class="highlight">before it hits your Vercel or AWS origin</span>.
         </p>
 
         <ul class="features">
-            <li>✅ Universal Proxy: Works with Node, Python, Java, Go, and PHP.</li>
-            <li>✅ Zero Overhead: Drops malicious traffic at the edge.</li>
-            <li>✅ Real-time Dashboard: See exactly who is attacking your endpoints.</li>
+            <li>⚡ <strong>Kill Bill Spikes:</strong> Drops scrapers before they trigger serverless invocations.</li>
+            <li>🛠️ <strong>Zero Code Changes:</strong> Language-agnostic. No NPM packages or SDKs to install.</li>
+            <li>💰 <strong>Transparent Pricing:</strong> Free during Alpha. $49/mo for Production tier.</li>
         </ul>
 
         <div class="form-container">
             <form id="waitlist-form" action="https://formspree.io/f/xlgwknbg" method="POST">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="engineer@company.com" required>
-                <button type="submit" id="submit-btn">Join Waitlist</button>
+                <label for="email">Secure your Alpha spot</label>
+                <input type="email" id="email" name="email" placeholder="founder@startup.com" required>
+                <button type="submit" id="submit-btn">Request Alpha Access</button>
             </form>
             <p class="message" id="form-message"></p>
         </div>
 
         <footer>
-            Currently designing the architecture. Join the waitlist for early access.
+            We are onboarding a small group of design partners to test the Go edge architecture. Invites roll out weekly.
         </footer>
     </div>
+    
     <script>
         document.getElementById('waitlist-form').addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -199,7 +246,7 @@
             const msg = document.getElementById('form-message');
 
             btn.disabled = true;
-            btn.textContent = 'Submitting…';
+            btn.textContent = 'Securing spot...';
             msg.textContent = '';
             msg.className = 'message';
 
@@ -213,10 +260,10 @@
                 });
 
                 if (response.ok) {
-                    msg.textContent = "✅ You're on the list! We'll be in touch.";
+                    msg.textContent = "✅ Spot secured! We will email you the Alpha endpoint soon.";
                     msg.className = 'message success';
                     document.getElementById('email').value = '';
-                    btn.textContent = 'Joined!';
+                    btn.textContent = 'You are on the list';
                 } else {
                     throw new Error('Form submission failed');
                 }
@@ -225,7 +272,7 @@
                 msg.textContent = '❌ Something went wrong. Please try again.';
                 msg.className = 'message error';
                 btn.disabled = false;
-                btn.textContent = 'Join Waitlist';
+                btn.textContent = 'Request Alpha Access';
             }
         });
     </script>
