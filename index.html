@@ -82,12 +82,18 @@
             font-size: 1rem;
             border-bottom: 1px solid #21262d;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: flex-start; /* Aligns emoji to the top line of text */
+            gap: 12px;
+            line-height: 1.5;
         }
 
         .features li:last-child {
             border-bottom: none;
+        }
+
+        .feature-icon {
+            flex-shrink: 0; /* Prevents the emoji from shrinking */
+            font-size: 1.1rem;
         }
 
         .form-container {
@@ -218,9 +224,18 @@
         </p>
 
         <ul class="features">
-            <li>⚡ <strong>Kill Bill Spikes:</strong> Drops scrapers before they trigger serverless invocations.</li>
-            <li>🛠️ <strong>Zero Code Changes:</strong> Language-agnostic. No NPM packages or SDKs to install.</li>
-            <li>💰 <strong>Transparent Pricing:</strong> Free during Alpha. $49/mo for Production tier.</li>
+            <li>
+                <span class="feature-icon">⚡</span> 
+                <div><strong>Kill Bill Spikes:</strong> Drops scrapers before they trigger serverless invocations.</div>
+            </li>
+            <li>
+                <span class="feature-icon">🛠️</span> 
+                <div><strong>Zero Code Changes:</strong> Language-agnostic. No NPM packages or SDKs to install.</div>
+            </li>
+            <li>
+                <span class="feature-icon">💰</span> 
+                <div><strong>Transparent Pricing:</strong> Free during Alpha. $49/mo for Production tier.</div>
+            </li>
         </ul>
 
         <div class="form-container">
